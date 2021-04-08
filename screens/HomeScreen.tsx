@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import GlassSheet from "../components/GlassSheet";
 import ProgressBar from "../components/ProgressBar";
 import BackgroundImage from "../components/BackgroundImage";
@@ -11,6 +11,7 @@ export default function HomeScreen({}) {
       <BackgroundImage
         imgPath={require("../assets/pexels-roberto-nickson-2486168.jpg")}
       >
+        <ScrollView>
         <GlassSheet color="dark">
           <ProgressBar
             goal={7}
@@ -45,7 +46,24 @@ export default function HomeScreen({}) {
             time="monthly"
             icon="heartbeat"
           />
+          <ProgressBar
+            goal={15}
+            amountDone={4}
+            color="#2089DC"
+            title="Eat healthy"
+            time="monthly"
+            icon="heartbeat"
+          />
+          <ProgressBar
+            goal={15}
+            amountDone={4}
+            color="#2089DC"
+            title="Eat healthy"
+            time="monthly"
+            icon="heartbeat"
+          />
         </GlassSheet>
+        </ScrollView>
       </BackgroundImage>
     </View>
   );
