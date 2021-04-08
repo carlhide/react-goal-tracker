@@ -17,7 +17,25 @@ function App() {
       <BackgroundImage
         imgPath={require("./assets/pexels-roberto-nickson-2486168.jpg")}
       />
-      <Tab.Navigator
+     
+    </NavigationContainer>
+  );
+}
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+
+
+/** 
+ *  <Tab.Navigator
         
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -47,17 +65,4 @@ function App() {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
-    </NavigationContainer>
-  );
-}
-
-export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+ */
