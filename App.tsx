@@ -1,60 +1,53 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Incrementer from "./components/Incrementer";
-import GlassSheet from "./components/GlassSheet";
-import ProgressBar from "./components/ProgressBar";
+// In App.js in a new project
 
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import * as React from "react";
+import { StyleSheet } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import BackgroundImage from "./components/BackgroundImage";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import HomeScreen from "./screens/HomeScreen";
+import SettingsScreen from "./screens/SettingsScreen";
 
-export default function App() {
+const Tab = createBottomTabNavigator();
+
+function App() {
   return (
-    <SafeAreaProvider>
-      <View style={styles.container}>
-        <BackgroundImage imgPath={require("./assets/pexels-roberto-nickson-2486168.jpg")}>
-          <GlassSheet color="dark">
-            <ProgressBar
-              goal={7}
-              amountDone={2}
-              color="#2089DC"
-              title="Stretch"
-              time="daily"
-              icon="heartbeat"
-            />
-            <ProgressBar
-              goal={10}
-              amountDone={21}
-              color="#2089DC"
-              title="Workout"
-              time="daily"
-              icon="heartbeat"
-            />
-            <ProgressBar
-              goal={15}
-              amountDone={4}
-              color="#2089DC"
-              title="Eat healthy"
-              time="monthly"
-              icon="heartbeat"
-            />
-          </GlassSheet>
-          <GlassSheet color="green">
-            <Text style={{ margin: 10, backgroundColor: "transparent" }}>
-              {" "}
-              Check out the counters above me!{" "}
-            </Text>
-          </GlassSheet>
-          <GlassSheet color="red">
-            <Text style={{ margin: 10 }}>
-              {" "}
-              If you see this red box you've probably done something wrong!{" "}
-            </Text>
-          </GlassSheet>
-        </BackgroundImage>
-      </View>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <BackgroundImage
+        imgPath={require("./assets/pexels-roberto-nickson-2486168.jpg")}
+      />
+      <Tab.Navigator
+      
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === "Home") {
+              iconName = focused
+                ? "ios-information-circle"
+                : "ios-information-circle-outline";
+            } else if (route.name === "Settings") {
+              iconName = focused ? "ios-list" : "ios-list";
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: "tomato",
+          inactiveTintColor: "gray",
+        }}
+      >
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
