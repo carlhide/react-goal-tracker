@@ -48,7 +48,7 @@ export default class GlassSheet extends React.Component<IProps, IState> {
         style={[styles.container, { backgroundColor: this.state.currentColor }]}
       >
         <BlurView tint="default" intensity={50}>
-          {this.props.children}
+          <View style={styles.children}>{this.props.children}</View>
         </BlurView>
       </View>
     );
@@ -63,10 +63,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "stretch",
     textAlign: "center",
-    borderLeftWidth: 0,
-    borderTopColor: "#c8c8c8",
-    borderTopWidth: 0,
-    borderLeftColor: "#c8c8c8",
+    borderColor: "rgba(255,255,255,0.3)",
+    borderWidth: 1,
+    //borderLeftWidth: 0,
+   // borderTopWidth: 0,
+    //borderLeftColor: "#c8c8c8",
     justifyContent: "space-around",
 
     width: "95%",
@@ -82,8 +83,14 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
 
-  child: {
-    margin: 10,
+  children: {
+    margin: 5,
     color: "white",
+    alignItems: "center",
+    textAlign: "center",
+    justifyContent: "space-around",
+
+
+
   },
 });

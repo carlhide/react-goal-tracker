@@ -164,7 +164,7 @@ export default class ProgressBar extends React.Component<IProps, IState> {
                   backgroundColor: this.props.color,
                 },
               ]}
-              colors={["#CE9A9C", "#7CA9B7", "#7794B4"]}
+              colors={["#7794B4", "#7CA9B7", "#CE9A9C"]}
               start={{ x: 0.5, y: 1 }}
               end={{ x: 0.0, y: 0.25 }}
               locations={[0.2, 0.5, 0.8]}

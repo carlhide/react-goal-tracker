@@ -1,0 +1,4 @@
+[] Add a light gradient above glasssheet 
+[] Add navigation bar
+[] Add a way to add more goals
+[] Make the gradient progressbar an individual component

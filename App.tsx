@@ -3,7 +3,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import BackgroundImage from "./components/BackgroundImage";
 import HomeScreen from "./screens/HomeScreen";
@@ -18,10 +18,10 @@ function App() {
         imgPath={require("./assets/pexels-roberto-nickson-2486168.jpg")}
       />
       <Tab.Navigator
-      
+        
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+            let iconName = "";
 
             if (route.name === "Home") {
               iconName = focused
@@ -32,12 +32,16 @@ function App() {
             }
 
             // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return <Ionicons name={iconName} size={size} color={color} />
           },
         })}
         tabBarOptions={{
-          activeTintColor: "tomato",
-          inactiveTintColor: "gray",
+          activeTintColor: "#FED1C0",
+          inactiveTintColor: "#224554",
+          style: {
+            backgroundColor: "rgba(34,69,84, 0.5)",
+            paddingBottom: 5,
+          }
         }}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
