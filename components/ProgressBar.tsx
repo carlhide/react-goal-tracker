@@ -32,26 +32,21 @@ const COLOR = "lightgray";
 export default class ProgressBar extends React.Component<IProps, IState> {
   animVal = new Animated.Value(0);
 
-
-  mapValue = (val: number, i1: number, i2: number, o1: number, o2: number) =>{
+  mapValue = (val: number, i1: number, i2: number, o1: number, o2: number) => {
     //  output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
-      return Math.round(o1+((o2-o1)/i2-i1))*(val-i1)
-  }
-
+    return Math.round(o1 + ((o2 - o1) / i2 - i1)) * (val - i1);
+  };
 
   constructor(props: IProps) {
     super(props);
-
 
     this.state = {
       currentDone: this.props.amountDone,
       currentGoal: this.props.goal,
       currentWidth: (this.props.amountDone / this.props.goal) * 100,
       previousWidth: (this.props.amountDone / this.props.goal) * 100,
-      iconColor: "#FED1C0"
+      iconColor: "#FED1C0",
     };
-
-
   }
 
   interpolateBar = this.animVal.interpolate({
@@ -65,8 +60,6 @@ export default class ProgressBar extends React.Component<IProps, IState> {
   });
 
   incrementer = () => {
-
-
     this.setState({
       currentDone: this.state.currentDone + 1,
       previousWidth: this.state.currentWidth,
@@ -95,7 +88,6 @@ export default class ProgressBar extends React.Component<IProps, IState> {
     console.log(iconHex)
 
     */
-
   };
 
   decrementer = () => {
@@ -111,83 +103,84 @@ export default class ProgressBar extends React.Component<IProps, IState> {
     }
   };
 
-  componentDidUpdate(){
-
-  }
+  componentDidUpdate() {}
 
   render() {
     return (
       <View style={styles.wrapperVertcal}>
-        <Icon
-          name={this.props.icon}
-          type="font-awesome"
-          color= {this.state.iconColor}//"#95C070"
-          size={40}
-          style={{marginBottom: 10}}
-        ></Icon>
-
-        <View style={styles.wrapperHorizontal}>
-          <TouchableOpacity
-            style={[styles.button, styles.buttonRight]}
-            onPress={this.decrementer}
-          >
-            <Text style={{ color: "white" }}>-</Text>
-          </TouchableOpacity>
-
-          <View style={styles.outerContainer}>
-            <View
-              style={[
-                styles.innerContainer,
-                {
-                  width:
-                    (this.state.currentDone / this.state.currentGoal) * 100 >
-                    100
-                      ? 100 + "%"
-                      : (this.state.currentDone / this.state.currentGoal) *
-                          100 +
-                        "%",
-                  backgroundColor: this.props.color,
-                },
-              ]}
-            />
-            <LinearGradient
-              style={[
-                styles.innerContainer,
-                {
-                  width:
-                    (this.state.currentDone / this.state.currentGoal) * 100 >
-                    100
-                      ? 100 + "%"
-                      : (this.state.currentDone / this.state.currentGoal) *
-                          100 +
-                        "%",
-                  backgroundColor: this.props.color,
-                },
-              ]}
-              colors={["#7794B4", "#7CA9B7", "#CE9A9C"]}
-              start={{ x: 0.5, y: 1 }}
-              end={{ x: 0.0, y: 0.25 }}
-              locations={[0.2, 0.5, 0.8]}
-            ></LinearGradient>
-
-            <Text style={styles.text}>
-              {this.props.title} {this.state.currentDone}/
-              {this.state.currentGoal}
-            </Text>
+        <GlassSheet color="dark">
+          <View style={styles.iconWrapper}> 
+          <Icon
+            name={this.props.icon}
+            type="font-awesome"
+            color={this.state.iconColor} //"#95C070"
+            size={45}
+            style={styles.icon}
+          ></Icon>
           </View>
-          <TouchableOpacity
-            style={[styles.button, styles.buttonRight]}
-            onPress={this.incrementer}
-          >
-            <Text style={{ color: "white" }}>+</Text>
-          </TouchableOpacity>
-        </View>
-        <GlassSheet color="light">
-          <Text style={styles.description}>
-            {" "}
-            "{this.props.title}" is a {this.props.time} goal you want to
-            complete {this.props.goal} times.{" "}
-          </Text>
+
+          <View style={styles.wrapperHorizontal}>
+            <TouchableOpacity
+              style={[styles.button, styles.buttonRight]}
+              onPress={this.decrementer}
+            >
+              <Text style={{ color: "white" }}>-</Text>
+            </TouchableOpacity>
+
+            <View style={styles.outerContainer}>
+              <View
+                style={[
+                  styles.innerContainer,
+                  {
+                    width:
+                      (this.state.currentDone / this.state.currentGoal) * 100 >
+                      100
+                        ? 100 + "%"
+                        : (this.state.currentDone / this.state.currentGoal) *
+                            100 +
+                          "%",
+                    backgroundColor: this.props.color,
+                  },
+                ]}
+              />
+              <LinearGradient
+                style={[
+                  styles.innerContainer,
+                  {
+                    width:
+                      (this.state.currentDone / this.state.currentGoal) * 100 >
+                      100
+                        ? 100 + "%"
+                        : (this.state.currentDone / this.state.currentGoal) *
+                            100 +
+                          "%",
+                    backgroundColor: this.props.color,
+                  },
+                ]}
+                colors={["#7794B4", "#7CA9B7", "#CE9A9C"]}
+                start={{ x: 0.5, y: 1 }}
+                end={{ x: 0.0, y: 0.25 }}
+                locations={[0.2, 0.5, 0.8]}
+              ></LinearGradient>
+
+              <Text style={styles.text}>
+                {this.props.title} {this.state.currentDone}/
+                {this.state.currentGoal}
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={[styles.button, styles.buttonRight]}
+              onPress={this.incrementer}
+            >
+              <Text style={{ color: "white" }}>+</Text>
+            </TouchableOpacity>
+          </View>
+          <GlassSheet color="light">
+            <Text style={styles.description}>
+              {" "}
+              "{this.props.title}" is a {this.props.time} goal 
+            </Text>
+          </GlassSheet>
         </GlassSheet>
       </View>
     );
@@ -207,6 +200,7 @@ const styles = StyleSheet.create({
 
     justifyContent: "center",
     display: "flex",
+    marginTop: 15
   },
   wrapperHorizontal: {
     width: "100%",
@@ -215,6 +209,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     display: "flex",
+  },
+  iconWrapper: {
+    marginBottom: -20,
+    overflow: "visible",
+    height: 50,
+    top:-25
+  },
+  icon: {
+    
   },
   outerContainer: {
     height: 30,
@@ -236,7 +239,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
     elevation: 24,
-    
   },
   innerContainer: {
     position: "absolute",
@@ -252,11 +254,13 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     color: "#FDE6F6",
+    textAlignVertical: "center"
   },
   description: {
-    margin: 5,
+    margin: 2,
     color: "#224554",
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
+    fontStyle: "italic"
   },
   button: {
     borderRadius: 1000,
