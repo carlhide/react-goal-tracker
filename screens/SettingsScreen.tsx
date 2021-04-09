@@ -2,17 +2,29 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import GlassSheet from "../components/GlassSheet";
 import BackgroundImage from "../components/BackgroundImage";
-import BottomNavigator from "../components/BottomNavigator";
+import ColorfulButton from "../components/ColorfulButton";
 
 export default function SettingsScreen() {
+
+
+  var handlePress = () => {
+    console.log("clicked");
+  
+  };
+
   return (
-      <View style={styles.container}>
-        <BackgroundImage imgPath={require("../assets/pexels-roberto-nickson-2486168.jpg")}>
-          <GlassSheet color="dark">
-              
-          </GlassSheet>
-        </BackgroundImage>
-      </View>
+    <View style={styles.container}>
+      <BackgroundImage
+        imgPath={require("../assets/pexels-roberto-nickson-2486168.jpg")}
+      />
+      <GlassSheet color="dark">
+        <ColorfulButton
+          title="New Goal"
+          onPress={handlePress}
+        />
+      </GlassSheet>
+     
+    </View>
   );
 }
 
@@ -23,7 +35,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  text: {
-    
-  }
+  text: {},
 });

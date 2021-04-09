@@ -2,9 +2,11 @@ import React from "react";
 import {
   ImageBackground,
   ImageBackgroundProps,
+  SafeAreaView,
   StyleSheet,
   View,
 } from "react-native";
+
 
 interface IProps {
   imgPath: ImageBackgroundProps;
@@ -45,6 +47,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     position: "absolute"
+
   },
   image: {
     flex: 1,
