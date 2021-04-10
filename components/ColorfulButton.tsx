@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   menuItem: {},
   icon: {},
   text: {
-    color: "#112637",
+    color: "#224554",
     fontWeight: "bold",
     fontStyle: "italic",
     textAlign: "center"

@@ -20,7 +20,7 @@ export default function HomeScreen({}) {
               amountDone={2}
               color="#2089DC"
               title="Stretch"
-              time="daily"
+              time="Daily"
               icon="heartbeat"
             />
             <ProgressBar
@@ -28,7 +28,7 @@ export default function HomeScreen({}) {
               amountDone={21}
               color="#2089DC"
               title="Workout"
-              time="daily"
+              time="Monthly"
               icon="heartbeat"
             />
             <ProgressBar
@@ -36,7 +36,7 @@ export default function HomeScreen({}) {
               amountDone={4}
               color="#2089DC"
               title="Eat healthy"
-              time="monthly"
+              time="Weekly"
               icon="heartbeat"
             />
 
@@ -44,24 +44,24 @@ export default function HomeScreen({}) {
               goal={15}
               amountDone={4}
               color="#2089DC"
-              title="Eat healthy"
-              time="monthly"
+              title="Read"
+              time="Daily"
               icon="heartbeat"
             />
             <ProgressBar
               goal={15}
               amountDone={4}
               color="#2089DC"
-              title="Eat healthy"
-              time="monthly"
+              title="Do dishes"
+              time="Daily"
               icon="heartbeat"
             />
             <ProgressBar
               goal={15}
               amountDone={4}
               color="#2089DC"
-              title="Eat healthy"
-              time="monthly"
+              title="Invest"
+              time="Weekly"
               icon="heartbeat"
             />
 

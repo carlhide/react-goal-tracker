@@ -214,7 +214,8 @@ const styles = StyleSheet.create({
     marginBottom: -20,
     overflow: "visible",
     height: 50,
-    top:-25
+    top:-25,
+
   },
   icon: {
     
